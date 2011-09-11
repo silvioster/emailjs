@@ -195,11 +195,14 @@ SMTP.prototype =
 			self.sock.connect(self.port, self.host, connected);
 		}
 
-		connect_timeout = setTimeout(timedout, self.timeout);
+		connect_timeout = setTimeout(self.timeout, timedout);
 		SMTPResponse.watch(self.sock);
 
 		self.sock.setTimeout(self.timeout);
 		self.sock.once('response', response);
+		self.sock.on('should_close', function(err,data){
+				self.close(true); 
+		});
 	},
 	
 	send: function(str, callback)
