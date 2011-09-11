@@ -55,7 +55,7 @@ function SMTPResponse(stream, timeout)
 		else
 			stream.emit('response', {code:SMTPError.CONNECTIONENDED, message:"connection has ended", error:err});
 		
-		stream.emit('should_close' {code:SMTPError.CONNECTIONENDED, message:"connection has ended", error:err});
+		stream.emit('should_close', {code:SMTPError.CONNECTIONENDED, message:"connection has ended", error:err});
 		
 		stream.removeAllListeners('should_close');
 		stream.removeAllListeners('response');
